@@ -1,16 +1,45 @@
 import React from 'react';
-import { Card, CardContent, Typography, Chip, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
 import { Post } from '../types/api';
 
+interface PostCardProps {
+  post: Post;
+}
 
-/**
- * PostCard component for displaying individual post data
- * Demonstrates proper use of TypeScript interfaces and MUI components
- */
-const PostCard: = ({ post }) => {
+const PostCard: React.FC<PostCardProps> = ({ post }) => {
   return (
-  { /* TODO: Add PostCard */ }
+    <Card
+      variant="outlined"
+      sx={{
+        mb: 3,
+        borderRadius: 2,
+        boxShadow: 1,
+      }}
+      data-testid={`post-card-${post.id}`}
+    >
+      <CardContent>
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          {post.title}
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary" paragraph>
+          {post.body}
+        </Typography>
+
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Chip
+            label={`User ID: ${post.userId}`}
+            variant="outlined"
+            color="primary"
+            size="small"
+          />
+          <Typography variant="caption" color="text.secondary">
+            Post #{post.id}
+          </Typography>
+        </Box>
+      </CardContent>
+    </Card>
   );
 };
 
-export default PostCard; 
+export default PostCard;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import PostList from '../PostList';
-import ApiService from '../../services/api';
+import ApiService from '../../services/ApiService';
 
 // Mock the API service
 jest.mock('../../services/api');
